@@ -16,14 +16,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -36,14 +36,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.043597 0.082619 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_6.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_6.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.043597 0.082619 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_6.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_6.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -56,14 +56,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.044403 0.082619 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.044403 0.082619 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -76,14 +76,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.088403 0.006409 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.088403 0.006409 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -96,14 +96,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.044403 -0.069802 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.044403 -0.069802 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -116,14 +116,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.043597 -0.069802 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.043597 -0.069802 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -136,14 +136,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.089297 0.006409 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.089297 0.006409 0.0021"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_1_v1_1_5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_1_v1_1_5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -156,14 +156,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.095156 0.10997 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.095156 0.10997 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -176,14 +176,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.139245 -0.020778 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.139245 -0.020778 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -196,14 +196,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.051014 0.139794 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_6.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_6.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.051014 0.139794 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_6.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_6.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -216,14 +216,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.048131 -0.127335 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.048131 -0.127335 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -236,14 +236,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.093119 -0.099325 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.093119 -0.099325 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -256,14 +256,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.141258 -0.020168 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.141258 -0.020168 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/link_2_v1_1_3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/link_2_v1_1_3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -276,14 +276,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.23747 0.027103 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.23747 0.027103 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_2.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_2.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -296,14 +296,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.095321 -0.210936 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.095321 -0.210936 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_3.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_3.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -316,14 +316,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.146259 -0.179276 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_6.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_6.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.146259 -0.179276 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_6.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_6.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -336,14 +336,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.237335 0.031891 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.237335 0.031891 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_5.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_5.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -356,14 +356,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.147058 0.191913 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.147058 0.191913 -0.0244"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/L3_v4_1_4.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/L3_v4_1_4.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -376,14 +376,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.063545 -0.030046 -0.026"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/Top_plate_v2_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/Top_plate_v2_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.063545 -0.030046 -0.026"/>
       <geometry>
-        <mesh filename="/home/darsh/Desktop/ROS/Hexapod/hexapod/meshes/Top_plate_v2_1.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="file://$(find hexapod)/meshes/Top_plate_v2_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>

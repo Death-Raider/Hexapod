@@ -1,5 +1,6 @@
 from setuptools import find_packages, setup
-
+import os
+from glob import glob
 package_name = 'hexapod'
 
 setup(
@@ -10,8 +11,11 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name,'urdf'), glob(package_name+'/urdf/*')),
+        (os.path.join('share', package_name, 'meshes'), glob(package_name+'/meshes/*')),
     ],
     install_requires=['setuptools'],
+    py_modules=['hexapod.my_node'],
     zip_safe=True,
     maintainer='darsh',
     maintainer_email='darsh@todo.todo',
@@ -20,7 +24,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'my_node = hexapod.my_node:main'
+            'hexapod_node = hexapod.my_node:main'
         ],
     },
+
 )

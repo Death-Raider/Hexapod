@@ -4,8 +4,6 @@ import rclpy
 from rclpy.node import Node
 import numpy as np
 import time
-from robot_state_publisher.robot_state_publisher import RobotStatePublisher
-from urdf_parser_py.urdf import URDF
 
 # uncomment when building
 from hexapod.rotation import Rotation
@@ -69,8 +67,6 @@ class TransformPublisher(Node):
             time.sleep(0.01)
         self.stand_body()
 
-            
-
     def stand_body(self):
         for i in range(0,6):
             theta1 = np.pi/4
@@ -99,8 +95,7 @@ class TransformPublisher(Node):
                 self.get_timestamp()
             )
             self.transform_manager_static.broadcast_transform()
-
-    
+ 
     def move_leg(self, leg_index):
         """
         Movement of a leg to move forward is defined by the following sequence
@@ -112,7 +107,6 @@ class TransformPublisher(Node):
                move mount about z axis some amout (+theta -> 0)
         """
         leg = self.legs[leg_index]
-
 
     def movement(self,char):
         """
@@ -133,7 +127,7 @@ class TransformPublisher(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = TransformPublisher('transform_publisher')
+    node = TransformPublisher('hexapod_node')
     rclpy.spin(node)
     rclpy.shutdown()
 

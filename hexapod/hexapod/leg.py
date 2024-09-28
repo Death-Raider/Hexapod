@@ -1,5 +1,6 @@
-from rotation import Rotation
+from hexapod.rotation import Rotation
 import numpy as np
+
 class Leg:
     def __init__(self,leg_id, leg_name):
         self.id = leg_id

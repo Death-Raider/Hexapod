@@ -4,21 +4,23 @@ import rclpy
 from rclpy.node import Node
 import numpy as np
 import time
+from robot_state_publisher.robot_state_publisher import RobotStatePublisher
+from urdf_parser_py.urdf import URDF
 
 # uncomment when building
-# from test1.rotation import Rotation
-# from test1.transformManager import TransfromManager
-# from test1.wheels import Wheel
-# from test1.keyboard import KeyboardInput
-# from test1.body import Body
+from hexapod.rotation import Rotation
+from hexapod.transformManager import TransformManager
+from hexapod.leg import Leg
+from hexapod.keyboardInput import KeyboardInput
+from hexapod.body import Body
 
 
 # comment out when building 
-from rotation import Rotation
-from transformManager import TransformManager
-from leg import Leg
-from keyboardInput import KeyboardInput
-from body import Body
+# from rotation import Rotation
+# from transformManager import TransformManager
+# from leg import Leg
+# from keyboardInput import KeyboardInput
+# from body import Body
 
 class TransformPublisher(Node):
     def __init__(self,node_name):

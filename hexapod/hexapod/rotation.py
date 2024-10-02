@@ -55,3 +55,27 @@ class Rotation:
     
     def scale(self,s,x,y,z):
         return [x*s, y*s, z*s]
+    
+    def inverse_kinematics(self, end_pos:list[float], base_pos:list[float], l1:float, l2:float):
+        # inverse kinematics function for a robotic arm of 2 joints
+        # joint  at base_pos
+        # joint 2 at distance l1 from joint 1
+        # feet at distance l2 from joint 2
+        end_angles = [0,0] # theta1 and theta 2
+
+        # displacement vector
+        diff_vec = [end_pos[0] - base_pos[0], end_pos[1] - base_pos[1]]
+        d = math.hypot(*diff_vec)
+
+        # check if reachable 
+        if d > l1+l2 or d < abs(l1 - l2):
+            raise ValueError("Rotation IK: end position not reachable")
+        
+        # intermediate value calculation
+        q = (l1**2 - l2**2 + d**2)/(2*l1*d)
+        alpha = math.atan2(diff_vec[1],diff_vec[0])
+
+        #calculate angles
+        end_angles[0] = math.acos(q) + alpha
+        end_angles[1] = math.asin( (diff_vec[1] - l1*math.sin(end_angles[0]))/l2 )
+        return end_angles

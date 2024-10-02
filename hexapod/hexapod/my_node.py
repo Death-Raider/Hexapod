@@ -6,19 +6,19 @@ import numpy as np
 import time
 
 # uncomment when building
-from hexapod.rotation import Rotation
-from hexapod.transformManager import TransformManager
-from hexapod.leg import Leg
-from hexapod.keyboardInput import KeyboardInput
-from hexapod.body import Body
+# from hexapod.rotation import Rotation
+# from hexapod.transformManager import TransformManager
+# from hexapod.leg import Leg
+# from hexapod.keyboardInput import KeyboardInput
+# from hexapod.body import Body
 
 
 # comment out when building 
-# from rotation import Rotation
-# from transformManager import TransformManager
-# from leg import Leg
-# from keyboardInput import KeyboardInput
-# from body import Body
+from rotation import Rotation
+from transformManager import TransformManager
+from leg import Leg
+from keyboardInput import KeyboardInput
+from body import Body
 
 class TransformPublisher(Node):
     def __init__(self,node_name):
@@ -51,9 +51,9 @@ class TransformPublisher(Node):
             mount_pos = self.rotation.rotate_point(*init_dir, 0.0, 0.0, angle) # rotate init_dir in increments of 120 deg
             self.legs[i].mount_dir = mount_pos
             # mount the leg in this direction
-            self.legs[i].joints_angle[0] = mount_pos
+            self.legs[i].joints_angle[0] = [0.0, 0.0, angle]
             self.legs[i].joints_pos[0] = self.rotation.scale(self.body.radius, *mount_pos)
-            self.legs[i].joints_rot[0] = self.rotation.euler_to_quaternion(0.0, 0.0, angle)
+            self.legs[i].joints_rot[0] = self.rotation.euler_to_quaternion(*self.legs[i].joints_angle[0])
             # set the body and leg transforms
             self.transform_manager_static.set_transform('body', self.legs[i].joints[0], self.legs[i].joints_pos[0]+self.legs[i].joints_rot[0], self.get_timestamp())
             self.transform_manager_static.broadcast_transform()
@@ -66,6 +66,7 @@ class TransformPublisher(Node):
             angle += np.pi/3
             time.sleep(0.01)
         self.stand_body()
+        self.move_leg(2)
 
     def stand_body(self):
         for i in range(0,6):
@@ -80,7 +81,7 @@ class TransformPublisher(Node):
                 self.get_timestamp()
             )
             self.transform_manager_static.broadcast_transform()
-
+            self.legs[i].joints_angle[1] = [0,-theta1,0]
             self.transform_manager_static.set_transform(
                 self.legs[i].joints[0],
                 self.legs[i].joints[1],
@@ -88,6 +89,7 @@ class TransformPublisher(Node):
                 self.get_timestamp()
             )
             self.transform_manager_static.broadcast_transform()
+            self.legs[i].joints_angle[2] = [0,theta2+theta1,0]
             self.transform_manager_static.set_transform(
                 self.legs[i].joints[1],
                 self.legs[i].joints[2],
@@ -97,16 +99,20 @@ class TransformPublisher(Node):
             self.transform_manager_static.broadcast_transform()
  
     def move_leg(self, leg_index):
-        """
-        Movement of a leg to move forward is defined by the following sequence
-            1. move mount about z axis some amout (0 -> +theta)
-               move joint_1 about y axis some amount (0 -> +alpha)
-               move joint_2 about y axis some amount (0 -> +beta)
-            2. when mount at +theta, move joint_2 about y axis some amount (+beta -> 0)
-               move joint_1 about y axis some amount (+alpha -> 0)
-               move mount about z axis some amout (+theta -> 0)
-        """
         leg = self.legs[leg_index]
+        joint_index = 1
+        # angles = self.rotation.inverse_kinematics()
+        phi = np.radians(30) # stride angle
+        leg.joints_angle[joint_index][1] += phi
+        leg.joints_rot[joint_index] = self.rotation.euler_to_quaternion(*leg.joints_angle[joint_index])
+
+        self.transform_manager_static.set_transform(
+            'body' if joint_index == 0 else leg.joints[joint_index-1],
+            leg.joints[joint_index],
+            leg.joints_pos[joint_index]+leg.joints_rot[joint_index],
+            self.get_timestamp()
+        )
+        self.transform_manager_static.broadcast_transform()
 
     def movement(self,char):
         """

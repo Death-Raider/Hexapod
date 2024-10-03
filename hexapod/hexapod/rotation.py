@@ -79,3 +79,9 @@ class Rotation:
         end_angles[0] = math.acos(q) + alpha
         end_angles[1] = math.asin( (diff_vec[1] - l1*math.sin(end_angles[0]))/l2 )
         return end_angles
+    
+    def rotate_about_point(self,x,y,z,px,py,pz,roll,pitch,yaw):
+        x1,y1,z1 = x-px, y-py, z-pz
+        x2,y2,z2 = self.rotate_point(x1,y1,z1,roll,pitch,yaw)
+        x3,y3,z3 = x2+px, y2+py, z2+pz
+        return [x3,y3,z3]

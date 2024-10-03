@@ -31,9 +31,15 @@ class Leg:
     
     def get_absolute_joint_position(self):
         self.joints_abs_pos = [[0.0]*3 for i in self.joints_pos]
-        self.joints_abs_pos[0] = self.joints_pos[0]
+        self.joints_abs_angle = [[0.0]*3 for i in self.joints_pos]
+        self.joints_abs_pos[0] = self.joints_pos[0].copy()
+        self.joints_abs_angle[0] = self.joints_angle[0].copy()
         for i in range(1,len(self.joints_pos)):
-            self.joints_abs_pos[i] = self.rotation.rotate_point(*self.joints_pos[i],*self.joints_angle[i-1])
+            self.joints_abs_angle[i] = self.joints_angle[i].copy()
+            self.joints_abs_angle[i][0] += self.joints_abs_angle[i-1][0]
+            self.joints_abs_angle[i][1] += self.joints_abs_angle[i-1][1]
+            self.joints_abs_angle[i][2] += self.joints_abs_angle[i-1][2]
+            self.joints_abs_pos[i] = self.rotation.rotate_point(*self.joints_pos[i],*self.joints_abs_angle[i-1])
             self.joints_abs_pos[i][0] += self.joints_abs_pos[i-1][0]
             self.joints_abs_pos[i][1] += self.joints_abs_pos[i-1][1]
             self.joints_abs_pos[i][2] += self.joints_abs_pos[i-1][2]
@@ -54,7 +60,7 @@ class Leg:
             return [t, ratio*t, proj_mov]
         
         diff_vec = [final_foot_pos[0] - start_foot_pos[0] , final_foot_pos[1] - start_foot_pos[1]]
-        
+
         cond = diff_vec[0] < 0
         t_start = min(0,diff_vec[0])
         t_end = max(0,diff_vec[0])
@@ -76,12 +82,11 @@ class Leg:
 #     [0.0, -1.0, 0.0],
 # ]
 # leg.joints_angle = [
+#     [0.0, 0.0, 1.57],
 #     [0.0, 0.0, 0.0],
-#     [0.0, 0.0, 0.0],
-#     [0.0, 0.0, 3.14/2],
-#     [0.0, -3.14/2, 0.0],
+#     [0.0, 0.0, 1.57],
+#     [0.0, -1.57, 0.0],
 # ]
 # leg.get_absolute_joint_position()
 # print(leg.joints_abs_pos)
-# print(leg.joints_abs_angle)
 # pos = leg.get_leg_movement(np.radians(30), 30)

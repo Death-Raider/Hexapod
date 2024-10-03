@@ -66,7 +66,7 @@ class TransformPublisher(Node):
             angle += np.pi/3
             time.sleep(0.01)
         self.stand_body()
-        self.move_leg(2)
+        self.move_leg(0)
 
     def stand_body(self):
         for i in range(0,6):
@@ -98,14 +98,21 @@ class TransformPublisher(Node):
             )
             self.transform_manager_static.broadcast_transform()
  
-    def move_leg(self, leg_index):
+    def move_leg(self, leg_index: int):
         leg = self.legs[leg_index]
-        joint_index = 1
-        # angles = self.rotation.inverse_kinematics()
+        joint_index = 0
         phi = np.radians(30) # stride angle
-        leg.joints_angle[joint_index][1] += phi
-        leg.joints_rot[joint_index] = self.rotation.euler_to_quaternion(*leg.joints_angle[joint_index])
 
+        # get foot and rotate it about joint_index by phi
+        leg.get_absolute_joint_position()
+        rot_foot = self.rotation.rotate_about_point(*leg.joints_abs_pos[-1],*leg.joints_abs_pos[joint_index],0,0,phi)
+
+        # update mount angle by phi, get foot
+        leg.joints_angle[joint_index][2 if joint_index == 0 else 1] += phi # only updated mount in z axis, other joints y axis
+        leg.joints_rot[joint_index] = self.rotation.euler_to_quaternion(*leg.joints_angle[joint_index])
+        leg.get_absolute_joint_position()
+
+        # broadcast transform for rotation
         self.transform_manager_static.set_transform(
             'body' if joint_index == 0 else leg.joints[joint_index-1],
             leg.joints[joint_index],

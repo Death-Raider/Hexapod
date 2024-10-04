@@ -56,6 +56,12 @@ class Rotation:
     def scale(self,s,x,y,z):
         return [x*s, y*s, z*s]
     
+    def polar(self,x,y):
+        return [math.hypot(x,y), math.atan2(y,x)]
+    
+    def polar_about(self,x,y, px,py):
+        return [math.hypot(x-px,y-py), math.atan2(y-py,x-px)]
+    
     def inverse_kinematics(self, end_pos:list[float], base_pos:list[float], l1:float, l2:float):
         # inverse kinematics function for a robotic arm of 2 joints
         # joint  at base_pos

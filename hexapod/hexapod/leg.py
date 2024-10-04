@@ -44,29 +44,28 @@ class Leg:
             self.joints_abs_pos[i][1] += self.joints_abs_pos[i-1][1]
             self.joints_abs_pos[i][2] += self.joints_abs_pos[i-1][2]
 
-    def get_leg_movement(self,start_foot_pos, final_foot_pos, stride_time):
+    def get_leg_movement(self,start_foot_pos, final_foot_pos, stride_time, max_height=1):
         
         def movement_function(x:float, vec:list[float], max_height:float = 1)->float:
             mag = math.hypot(*vec)
             return -4*max_height*(x/mag)**2+4*max_height*x/mag # returns the height
         
-        def projected_movement(x:float, y:float, vec:list[float])->float:
+        def projected_movement(x:float, y:float, vec:list[float], max_height:float = 1)->float:
             mag = math.hypot(*vec)
-            return movement_function( np.dot(vec,(x,y))/mag , vec)
+            return movement_function( np.dot(vec,(x,y))/mag , vec, max_height)
         
-        def planar_movement(t:float, vec:list[float])->tuple[float]:
+        def movement_plane_movement(t:float, vec:list[float], max_height:float = 1)->tuple[float]:
             ratio = vec[1]/vec[0]  # y/x
-            proj_mov = projected_movement(t, ratio*t, vec)
+            proj_mov = projected_movement(t, ratio*t, vec, max_height)
             return [t, ratio*t, proj_mov]
         
         diff_vec = [final_foot_pos[0] - start_foot_pos[0] , final_foot_pos[1] - start_foot_pos[1]]
-
         cond = diff_vec[0] < 0
         t_start = min(0,diff_vec[0])
         t_end = max(0,diff_vec[0])
         pos = []
         for t in np.linspace(t_start, t_end, stride_time):
-            f_dash = planar_movement(t,diff_vec)
+            f_dash = movement_plane_movement(t,diff_vec,max_height)
             curr_foot_position = np.sum([start_foot_pos,f_dash],axis=0)
             pos.append(curr_foot_position)
         pos = np.array(pos)

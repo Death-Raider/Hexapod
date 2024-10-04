@@ -101,46 +101,42 @@ class TransformPublisher(Node):
 
     def move_leg(self, leg_index:int, stride_angle:float, smoothness:int):
 
-        def leg_plane_x(angle:float,stride_angle:float,dist:float,start_angle:float):
-            x = dist*math.cos(stride_angle/2)/math.cos(angle - stride_angle/2 - start_angle)
+        def leg_plane_x(angle:float,stride_angle:float):
+            x = math.cos(stride_angle/2)/math.cos(angle - stride_angle/2)
             return x
 
         leg = self.legs[leg_index]
         joint_index = 0 # rotate at mount
         phi = stride_angle
         steps = smoothness
-
+        max_height = 0.5
         # get foot and rotate it about joint_index by phi
         leg.get_absolute_joint_position()
         init_foot_pos = leg.joints_abs_pos[-1].copy()
         final_pos_foot = self.rotation.rotate_about_point(*leg.joints_abs_pos[-1],*leg.joints_abs_pos[joint_index],0,0,phi)
-        init_foot_polar = self.rotation.polar_about(*init_foot_pos[:2],*leg.joints_abs_pos[joint_index][:2])
-        final_foot_polar = self.rotation.polar_about(*final_pos_foot[:2],*leg.joints_abs_pos[joint_index][:2])
         # get the path that the foot should take
-        path_pos = leg.get_leg_movement(init_foot_pos,final_pos_foot,steps,1)
+        path_pos = leg.get_leg_movement(init_foot_pos,final_pos_foot,steps,max_height)
         print(path_pos)
-        x_0 = leg_plane_x(0, phi, *init_foot_polar)
         for t in range(0, steps):
-            x_1 =  leg_plane_x(t*phi/steps, phi, *init_foot_polar)
+            x_1 =  leg_plane_x((t+1)*phi/steps, phi)
             start_point = [0,0.5] # x position for foot, height of movement
-            plane_point = [x_1/x_0, path_pos[t][2] - path_pos[0][2]] # x position for foot, height of movement
+            plane_point = [x_1, path_pos[t][2] - path_pos[0][2]] # x position for foot, height of movement
             print("positions:", start_point, plane_point)
             theta1,theta2 = self.rotation.inverse_kinematics(plane_point,start_point,leg.lengths[1],leg.lengths[2])
-            print("angles:", theta1,theta2)
+            # print("angles:", theta1,theta2)
             self.set_leg(leg_index,theta1,theta2,self.transform_manager_dynamic)
             # update mount angle by phi, get foot
             leg.joints_angle[joint_index][2 if joint_index == 0 else 1] += phi/steps # only updated mount in z axis, other joints y axis
             leg.joints_rot[joint_index] = self.rotation.euler_to_quaternion(*leg.joints_angle[joint_index])
-            time.sleep(0.1)
-            x_0 = x_1
+            time.sleep(0.01)
 
     def movement(self,char):
         if char == 'w':
             print("moved leg")
-            self.move_leg(3,0.53,20)
+            self.move_leg(3,0.53,100)
             pass
         elif char == 's':
-            self.move_leg(3,-0.53,20)
+            self.move_leg(3,-0.53,100)
             print("moved leg")
             pass
         else:

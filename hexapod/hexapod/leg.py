@@ -73,19 +73,3 @@ class Leg:
             pos = pos[::-1]
         return pos
 
-# leg = Leg(0,'leg_test')
-# leg.joints_pos = [
-#     [0.0, 0.0, 1.0],
-#     [1.0, 0.0, 0.0],
-#     [0.0, 1.0, 0.0],
-#     [0.0, -1.0, 0.0],
-# ]
-# leg.joints_angle = [
-#     [0.0, 0.0, 1.57],
-#     [0.0, 0.0, 0.0],
-#     [0.0, 0.0, 1.57],
-#     [0.0, -1.57, 0.0],
-# ]
-# leg.get_absolute_joint_position()
-# print(leg.joints_abs_pos)
-# pos = leg.get_leg_movement(np.radians(30), 30)
